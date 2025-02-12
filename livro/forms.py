@@ -7,6 +7,7 @@ class LivroForm (forms.Form):
     autor = forms.CharField(max_length=75)
     data = forms.DateField()
     foto = forms.ImageField()
+    url = forms.CharField(max_length=5000)
 
     def save (self):
 
@@ -16,6 +17,8 @@ class LivroForm (forms.Form):
             autor=self.data['autor'],
             data=self.data['data'],
             foto=self.files['foto'],
+            url=self.data['url'],
+           
         )
 
         livro_novo.save()

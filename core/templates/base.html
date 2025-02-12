@@ -1,8 +1,12 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FILLIPE ASSIS</title>
+  <link rel="icon" href="{% static 'fillipeAssis.png' %}" type="image/x-icon">
   <title>{% block title %}{% endblock %}</title>
 </head>
 <body>
@@ -21,7 +25,6 @@
   </main>
 
   <footer>
-    {% load static %}
     <div class="logo">
       <img src="{% static 'fillipeAssis.png' %}" alt="Fillipe Assis">
     </div>
@@ -32,8 +35,8 @@
 <style>
     
   .logo img {
-    width: 70px;
-    height: 70px;
+    width: 60px;
+    height: 60px;
   }
 
   body {

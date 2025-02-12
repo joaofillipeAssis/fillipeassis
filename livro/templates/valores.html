@@ -4,7 +4,9 @@
   <div class="livro-grid-2">
     <div class="">
       <div class="container livro-detalhe">
-        <img src="{{ livro.foto.url }}" alt="{{ livro.livro }}">
+        <a href="{{ livro.url }}" target="_blank">
+          <img src="{{ livro.foto.url }}" alt="{{ livro.livro }}">
+        </a>
       </div>
       <div class="container-info livro-card livro-grid-2">
         <h3 class="">{{ livro.paginas }} páginas</h3>

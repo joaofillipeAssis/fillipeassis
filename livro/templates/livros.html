@@ -5,11 +5,9 @@
     {% if livros %}
       {% for livro in livros %}
         <div class="livro-card">
-          <img src="media/{{ livro.foto }}" alt="{{ livro.livro }}">
-          
-          <form method="GET" action="{% url 'valores' livro.id %}">
-            <button type="submit">Detalhar</button>
-          </form>
+          <a href="{% url 'valores' livro.id %}">
+            <img src="media/{{ livro.foto }}" alt="{{ livro.livro }}">
+          </a>
         </div>
       {% endfor %}
     {% else %}
@@ -20,7 +18,7 @@
   <style>
     .livro-grid {
       display: grid;
-      grid-template-columns: repeat(5, 1fr);
+      grid-template-columns: repeat(6, 1fr);
       gap: 20px;
       margin: 0 auto;
       max-width: 1000px;

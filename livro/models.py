@@ -7,6 +7,7 @@ class Livro(models.Model):
     autor = models.CharField(max_length=75)
     data = models.DateField()
     foto = models.ImageField(upload_to = 'static/livro', blank=True, null=True)
+    url = models.CharField(max_length=5000)
     
     def __str__(self):
         return self.livro
