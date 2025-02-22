@@ -15,6 +15,23 @@
     {% endif %}
   </div>
 
+  <div>
+    <span>
+
+      <span>
+        <p>Página {{ livros.number }} de {{ livros.paginator.num_pages }}</p>
+      </span>
+
+        {% if livros.has_previous %}
+            <a href="?page={{ livros.previous_page_number }}" class="button">Anterior</a>
+        {% endif %}
+
+        {% if livros.has_next %}
+            <a href="?page={{ livros.next_page_number }}" class="button">Próxima</a>
+        {% endif %}
+    </span>
+  </div>
+
   <style>
     .livro-grid {
       display: grid;
@@ -48,6 +65,25 @@
       object-fit: cover;
     }
 
+    .button {
+      display: inline-block;
+      padding: 10px 20px;
+      margin: 10px;
+      font-size: 16px;
+      text-align: center;
+      text-decoration: none;
+      background-color: #006d2d;
+      color: white;
+      border-radius: 5px;
+      border: none;
+      transition: background-color 0.3s ease;
+      justify-content: center;
+    }
+
+    .button:hover {
+      background-color: #108eb8;
+    }
+
     @media (max-width: 768px) {
       .livro-grid {
         grid-template-columns: repeat(2, 1fr);
@@ -64,19 +100,8 @@
         margin: 10px;
     }
 
-    button[type="submit"] {
-        background-color: #006d2d;
-        color: #fff;
-        border: none;
-        padding: 10px 20px;
-        font-size: 16px;
-        border-radius: 4px;
-        cursor: pointer;
-        transition: background-color 0.3s ease-in-out;
-    }
-
-    button[type="submit"]:hover {
-        background-color: #108eb8;
+    span {
+      text-align: center;
     }
 
   </style>

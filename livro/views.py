@@ -1,11 +1,16 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from django.http import HttpResponse
+from django.core.paginator import Paginator
 from livro.models import Livro, Valor
 from livro.forms import LivroForm, ValorForm
 
 def livros(request):
     livros = Livro.objects.all().order_by('livro')
-    return render(request, 'livros.html', {'livros': livros} )
+
+    paginator = Paginator(livros, 12)
+    pagina = request.GET.get('page')
+    livros_paginados = paginator.get_page(pagina)
+
+    return render(request, 'livros.html', {'livros': livros_paginados})
 
 def valores(request, id):
     livro = get_object_or_404(Livro, pk=id)
