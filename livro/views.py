@@ -15,7 +15,12 @@ def livros(request):
 def valores(request, id):
     livro = get_object_or_404(Livro, pk=id)
     valores = Valor.objects.filter(livro=livro.id).order_by('-data')
-    return render(request, 'valores.html', {'valores': valores, 'livro': livro})
+
+    paginator = Paginator(valores, 5)
+    pagina = request.GET.get('page')
+    valores_paginados = paginator.get_page(pagina)
+
+    return render(request, 'valores.html', {'valores': valores_paginados, 'livro': livro})
 
 def salvar_livro(request):
     if request.method == 'GET':

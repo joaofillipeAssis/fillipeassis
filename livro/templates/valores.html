@@ -35,8 +35,26 @@
           
         {% endfor %}
       {% else %}
-        <h1 class="no-results">Nenhum Valor encontrado.</h1>
+        <h1 class="no-results">Nenhum Valor Encontrado.</h1>
       {% endif %}
+
+      <div>
+        <span>
+          
+          <span>
+            <p>Página {{ valores.number }} de {{ valores.paginator.num_pages }}</p>
+          </span>
+    
+            {% if valores.has_previous %}
+                <a href="?page={{ valores.previous_page_number }}" class="button">Anterior</a>
+            {% endif %}
+    
+            {% if valores.has_next %}
+                <a href="?page={{ valores.next_page_number }}" class="button">Próxima</a>
+            {% endif %}
+        </span>
+      </div>
+    
 
     </div>
   </div>
@@ -109,6 +127,25 @@
       margin-bottom: 10px;
     }
 
+    .button {
+      display: inline-block;
+      padding: 10px 20px;
+      margin: 10px;
+      font-size: 16px;
+      text-align: center;
+      text-decoration: none;
+      background-color: #006d2d;
+      color: white;
+      border-radius: 5px;
+      border: none;
+      transition: background-color 0.3s ease;
+      justify-content: center;
+    }
+
+    .button:hover {
+      background-color: #108eb8;
+    }
+
     @media (max-width: 768px) {
       .livro-grid {
         grid-template-columns: repeat(2, 1fr);
@@ -162,5 +199,11 @@
     button[type="submit"]:hover {
         background-color: #108eb8;
     }
+
+    span {
+      text-align: center;
+    }
+
+
   </style>
 {% endblock %}
